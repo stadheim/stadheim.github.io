@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Silje Stadheim">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎖️</text></svg>">
+    <title>Dimmedag</title>
+    <script>
+        window.onload = main;
+
+        function main() {
+            const enDag = 24 * 60 * 60 * 1000; // timer * minutter * sekunder * millisekunder
+            const dimmedag = new Date("2024-07-31");
+            beregn(enDag, dimmedag);
+            setInterval(function () {
+                beregn(enDag, dimmedag);
+            }, 60 * 60 * 1000); // minutter * sekunder * millisekunder // sjekker hver time 
+        }
+
+        function beregn(enDag, dimmedag) {
+            const idag = new Date();
+            const diffDager = Math.round(Math.abs((dimmedag - idag) / enDag));
+            d("innpakning").innerHTML = "VING 72 HAR<br><span id='dager'>" + diffDager + "</span><br>DAGER IGJEN MED PLIKT"
+        }
+
+        //setter inn document.getElementById så jeg slipper å skrive de inn
+        function d(elm) { //elm for element
+            return document.getElementById(elm);
+        }
+
+    </script>
+    <style>
+        body {
+            font-family: Verdana, sans-serrif;
+            background-color: #1a2117;
+            color: #BAC1B8;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #innpakning {
+            font-size: 6vmin;
+            text-align: center;
+        }
+
+        #dager {
+            font-size: 42vmin;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="innpakning">
+    </div>
+
+</body>
+
+</html>
