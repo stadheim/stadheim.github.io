@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Silje Stadheim">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>staffl.es</title>
+
+    <script>
+        window.onload = main;
+
+        var arr = [
+            //= ["Visningstekst","link til nettside"];
+            ["Top X Movies", "topx.html"],
+            ["Nedtelling", "plikt.html"],
+        ];
+
+        function main() {
+            for (i = 0; i < arr.length; i++) {
+                generer(i);
+            }
+        }
+
+        function generer(nr) {
+            var tekst = arr[nr][0];
+            var link = arr[nr][1];
+            var visning = tekst.link(link);
+
+            var linje = document.createElement("li");
+            var id = "linje" + nr;
+            linje.setAttribute("id", id);
+            linje.style.margin = "20px";
+            d("innpakning").appendChild(linje);
+            d(id).innerHTML = visning;
+        }
+
+        //setter inn document.getElementById så jeg slipper å skrive de inn
+        function d(elm) { //elm for element
+            return document.getElementById(elm);
+        }
+
+    </script>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1e1e1e;
+            color: #FFFFFF;
+        }
+
+        #overskrift {
+            font-size: 3rem;
+            margin-left: 20%;
+        }
+
+        #innpakning {
+            font-size: 1rem;
+            margin-left: 10%;
+            font: 10vw;
+        }
+
+        a:link,
+        a:visited {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="overskrift">STAFFL.ES</h1>
+
+    <div id="innpakning"></div>
+
+</body>
+
+</html>
